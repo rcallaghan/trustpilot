@@ -15,22 +15,10 @@ const OverallRating = (props) => {
   const totalOfReviews = ratings.reduce(add, 0);
   const average = totalOfReviews / numberOfReviews
 
-  const Overall = (average) => {
-    if(average <= 2) {
-      return 'Poor'
-    }
-    if(average <=4) {
-      return 'Average'
-    }
-    if(average > 4) {
-      return 'Great'
-    }
-  }
-
   return (
     <div className="overview">
       <img src={Logo} alt="Trustpilot"/>
-      <h3>{ Overall(average) }</h3>
+      <h3>{ average < 3 ? "Poor" : average <4 ? "Average" : average >4 ? "Great" : "" }</h3>
       <img className="rating--average" src={`images/${average || 0}-stars-260x48.png`} />
       <p>Rated {average ? average : "0"} out of {numberOfReviews ? numberOfReviews : "0"} based on {numberOfReviews ? numberOfReviews : "0"} Reviews</p>
     </div>
